@@ -36,13 +36,13 @@ class Model():
 
     def __save_model__(self, model):
         # Save the trained model to a file using pickle
-        with open("../models/regressor.pkl", "wb") as f:
+        with open("../models/classifier.pkl", "wb") as f:
             pickle.dump(model, f)
 
     def __load_model__(self):
         # Load a saved model from a file
         try:
-            with open("../models/regressor.pkl", "rb") as f:
+            with open("../models/classifier.pkl", "rb") as f:
                 model = pickle.load(f)
             return model
         except:
