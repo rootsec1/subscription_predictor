@@ -87,6 +87,17 @@ prediction = model_instance.run_inference(user_data)
 
 The `run_inference` method takes a list of user features as input and returns a prediction.
 
+## Pipeline
+
+#### Preprocessing (cleaning & selecting features)
+`main.py` invokes the preprocessing module which cleans the `accounts.csv` and `subscriptions.csv` and puts them in a dataframe. The `PreProcessing` class also contains another function to not only clean the data but also add new features such as `num_subscriptions`.
+
+#### Modelling (fitting the data into the model)
+Using the resultant dataframe obtained from the `PreProcessing` module, we pass that on to the `Model` class which trains a `RandomForestClassifier` model. At the end of the training process, the accuracy and the AUROC are printed on screen. The trained model is then pickled and stored in `models/classifier.pkl` file
+
+#### Inference (get predictions)
+Once we have a model trained, any `account.id`s passed as input is then translated to a set of features which is then passed to the model for making predictions.
+
 ## Results
 
 You can evaluate the model's performance using accuracy and the area under the ROC curve (ROC AUC). After training the model, these metrics are printed to the console:
